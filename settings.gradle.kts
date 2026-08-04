@@ -3,6 +3,8 @@
 rootProject.name = "SaltMine"
 
 pluginManagement {
+    includeBuild("build-logic")
+
     repositories {
         google {
             mavenContent {
@@ -33,7 +35,7 @@ plugins {
     id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
-include(":androidApp")
-include(":desktopApp")
+include(":android")
+include(":desktop")
 include(":shared")
 //include(":webApp")
