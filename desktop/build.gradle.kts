@@ -4,10 +4,13 @@ plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.metro)
 }
 
 dependencies {
-    implementation(project(":shared:core:domain"))
+    implementation(project(":core:domain"))
+    implementation(project(":network"))
+    implementation(project(":setup"))
 
     implementation(compose.desktop.currentOs)
     implementation(libs.coroutines.swing)

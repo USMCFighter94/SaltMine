@@ -14,16 +14,9 @@ public interface SaltMineExtension {
     /**
      * Should iOS targets be enabled?
      * 
-     * Defaults to false.
-     */
-    public val iOSEnabled: Property<Boolean>
-
-    /**
-     * Should JavaScript targets be enabled?
-     * 
      * Defaults to true.
      */
-    public val jsEnabled: Property<Boolean>
+    public val iOSEnabled: Property<Boolean>
 
     /**
      * Should WebAssembly targets be enabled?
@@ -38,8 +31,7 @@ public interface SaltMineExtension {
         public fun create(extensions: ExtensionContainer): SaltMineExtension =
             extensions.create(NAME, SaltMineExtension::class.java).apply {
                 warningsAsErrors.convention(true)
-                iOSEnabled.convention(false)
-                jsEnabled.convention(true)
+                iOSEnabled.convention(true)
                 wasmEnabled.convention(true)
             }
     }

@@ -1,0 +1,63 @@
+package dev.kolin.saltmine.setup.response
+
+import kotlin.uuid.Uuid
+
+internal fun createFakeScryfallCardResponse(
+    obj: String? = "card",
+    id: String? = Uuid.random().toString(),
+    name: String? = "Card Name",
+    manaCost: String? = "1",
+    cmc: Double? = 1.0,
+    typeLine: String? = "Legendary Creature — Human",
+    oracle: String? = "Oracle Text",
+    power: String? = "1",
+    toughness: String? = "4",
+    colors: List<String>? = listOf("W"),
+    colorIdentity: List<String>? = listOf("W"),
+    set: String? = "Set",
+    setName: String? = "Set Name",
+    rarity: String? = "Common",
+    imageUrls: ScryfallCardImages? = createFakeScryfallCardImages(),
+): ScryfallCardResponse = ScryfallCardResponse(
+    obj = obj,
+    id = id,
+    name = name,
+    manaCost = manaCost,
+    cmc = cmc,
+    typeLine = typeLine,
+    oracle = oracle,
+    power = power,
+    toughness = toughness,
+    colors = colors,
+    colorIdentity = colorIdentity,
+    set = set,
+    setName = setName,
+    rarity = rarity,
+    imageUrls = imageUrls,
+)
+
+internal fun createFakeScryfallCardImages(
+    small: String? = "https://picsum.photos/200",
+    normal: String? = "https://picsum.photos/200",
+    large: String? = "https://picsum.photos/200",
+    png: String? = "https://picsum.photos/200",
+    artCrop: String? = "https://picsum.photos/200",
+    borderCrop: String? = "https://picsum.photos/200",
+    thumb: String? = "https://picsum.photos/200",
+    grid: String? = "https://picsum.photos/200",
+    display: String? = "https://picsum.photos/200",
+    art: String? = "https://picsum.photos/200",
+    crop: String? = "https://picsum.photos/200",
+): ScryfallCardImages = ScryfallCardImages(
+    small = small,
+    normal = normal,
+    large = large,
+    png = png,
+    artCrop = artCrop,
+    borderCrop = borderCrop,
+    thumb = thumb,
+    grid = grid,
+    display = display,
+    art = art,
+    crop = crop,
+)

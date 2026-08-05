@@ -37,5 +37,8 @@ plugins {
 
 include(":android")
 include(":desktop")
-include(":shared")
+include(":core:data")
+include(":core:domain")
+include(":network")
+include(":setup")
 //include(":webApp")
