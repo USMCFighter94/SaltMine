@@ -20,9 +20,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import dev.kolin.saltmine.core.domain.Format
 import dev.kolin.saltmine.core.domain.formats
+import dev.kolin.saltmine.core.ui.ValueChangeComponent
+import org.jetbrains.compose.resources.stringResource
+import saltmine.setup.generated.resources.Res
+import saltmine.setup.generated.resources.button_save_title
+import saltmine.setup.generated.resources.label_game_name
+import saltmine.setup.generated.resources.label_player_count
+import saltmine.setup.generated.resources.label_title_format
 
 @Composable
 fun SetupScreenContent(
@@ -39,20 +45,19 @@ fun SetupScreenContent(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier
-            .background(Color.Black)
+        modifier = modifier.background(Color.Black)
             .fillMaxWidth()
             .padding(8.dp)
     ) {
         TextField(
             value = gameName,
             onValueChange = onGameNameChanged,
-            label = { Text("Game Name") },
+            label = { Text(stringResource(Res.string.label_game_name)) },
             modifier = Modifier.fillMaxWidth()
         )
 
         Text(
-            text = "Format",
+            text = stringResource(Res.string.label_title_format),
             color = Color.White,
         )
 
@@ -77,49 +82,16 @@ fun SetupScreenContent(
         }
 
         Text(
-            text = "Player Count",
+            text = stringResource(Res.string.label_player_count),
             color = Color.White,
         )
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            TextButton(
-                colors = ButtonDefaults.textButtonColors(
-                    contentColor = Color.White,
-                    containerColor = Color.Black,
-                ),
-                enabled = players > selectedFormat.minPlayerCount,
-                onClick = { onPlayerCountChanged(players - 1) }
-            ) {
-                Text(
-                    text = "-",
-                    fontSize = 100.sp,
-                )
-            }
-
-            Text(
-                text = players.toString(),
-                fontSize = 100.sp,
-                color = Color.White,
-            )
-
-            TextButton(
-                colors = ButtonDefaults.textButtonColors(
-                    contentColor = Color.White,
-                    containerColor = Color.Black,
-                ),
-                enabled = players < selectedFormat.maxPlayerCount,
-                onClick = { onPlayerCountChanged(players + 1) }
-            ) {
-                Text(
-                    text = "+",
-                    fontSize = 64.sp,
-                )
-            }
-        }
+        ValueChangeComponent(
+            value = players,
+            minValue = selectedFormat.minPlayerCount,
+            maxValue = selectedFormat.maxPlayerCount,
+            onValueChanged = onPlayerCountChanged,
+        )
 
         TextButton(
             colors = ButtonDefaults.textButtonColors(
@@ -128,9 +100,7 @@ fun SetupScreenContent(
             ),
             onClick = onSave,
         ) {
-            Text(
-                text = "Save",
-            )
+            Text(stringResource(Res.string.button_save_title))
         }
     }
 }

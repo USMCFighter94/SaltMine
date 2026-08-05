@@ -1,0 +1,5 @@
+<resources>
+    <string name="button_save_title">Save</string>
+    <string name="icon_add_content_description">Add</string>
+    <string name="icon_subtract_content_description">Subtract</string>"
+</resources>
