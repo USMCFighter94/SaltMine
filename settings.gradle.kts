@@ -37,6 +37,7 @@ plugins {
 
 include(":android")
 include(":desktop")
+include(":database")
 include(":core:data")
 include(":core:domain")
 include(":core:ui")

@@ -2,7 +2,6 @@ import dev.kolin.saltmine.SaltMineExtension
 import dev.kolin.saltmine.configureJava
 import dev.kolin.saltmine.configureKotlin
 import dev.kolin.saltmine.configureMultiplatformTargets
-import dev.kolin.saltmine.configureOptionalMultiplatformTargets
 import dev.kolin.saltmine.getPluginId
 import dev.kolin.saltmine.libs
 import org.gradle.api.Plugin
@@ -25,10 +24,6 @@ public class MultiplatformConventionPlugin : Plugin<Project> {
         configureJava()
 
         afterEvaluate {
-            extensions.configure(KotlinMultiplatformExtension::class.java) {
-                it.configureOptionalMultiplatformTargets(extension)
-            }
-
             configureKotlin(extension)
         }
     }
