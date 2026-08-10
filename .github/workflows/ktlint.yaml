@@ -1,0 +1,25 @@
+name: KtLint
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/ktlint.yml
+      - '**/src/**/*.kt'
+      - '**.kts'
+
+env:
+  GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096M -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.caching=true"
+
+jobs:
+  ktlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
+
+      - name: Run KtLint
+        run: ./gradlew ktlintCheck
+        continue-on-error: true
