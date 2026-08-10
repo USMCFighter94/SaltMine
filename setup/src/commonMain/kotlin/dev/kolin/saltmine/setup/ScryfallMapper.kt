@@ -9,9 +9,7 @@ import dev.zacsweers.metro.Inject
 
 @Inject
 internal class ScryfallMapper {
-    fun toDomain(
-        response: ScryfallResponse?,
-    ): Result<List<Commander>> {
+    fun toDomain(response: ScryfallResponse?): Result<List<Commander>> {
         if (response == null) return Result.failure(IllegalStateException("response is null"))
         if (response.data == null) return Result.failure(IllegalStateException("data is null: $response"))
 
@@ -24,9 +22,7 @@ internal class ScryfallMapper {
         return Result.success(commanders)
     }
 
-    private fun toDomain(
-        card: ScryfallCardResponse,
-    ): Result<Commander> {
+    private fun toDomain(card: ScryfallCardResponse): Result<Commander> {
         if (card.name == null) return Result.failure(IllegalStateException("name is null: $card"))
         if (card.typeLine == null) return Result.failure(IllegalStateException("typeLine is null: $card"))
         if (card.colorIdentity == null) return Result.failure(IllegalStateException("colorIdentity is null: $card"))
@@ -50,14 +46,13 @@ internal class ScryfallMapper {
         return Result.success(commander)
     }
 
-    private fun String.toColor(): MTGColor? =
-        when (this) {
-            "W" -> MTGColor.WHITE
-            "U" -> MTGColor.BLUE
-            "B" -> MTGColor.BLACK
-            "R" -> MTGColor.RED
-            "G" -> MTGColor.GREEN
-            "C" -> MTGColor.COLORLESS
-            else -> null
-        }
+    private fun String.toColor(): MTGColor? = when (this) {
+        "W" -> MTGColor.WHITE
+        "U" -> MTGColor.BLUE
+        "B" -> MTGColor.BLACK
+        "R" -> MTGColor.RED
+        "G" -> MTGColor.GREEN
+        "C" -> MTGColor.COLORLESS
+        else -> null
+    }
 }

@@ -28,9 +28,8 @@ public sealed interface Format {
     }
 }
 
-public fun formats(): List<Format> =
-    listOf(
-        Format.Commander,
-        Format.Standard,
-        Format.Modern,
-    )
+public fun formats(): List<Format> = listOf(
+    Format.Commander,
+    Format.Standard,
+    Format.Modern,
+)

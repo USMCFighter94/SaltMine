@@ -36,9 +36,9 @@ internal fun SetupScreenContent(
     formats: List<Format>,
     selectedFormat: Format,
     players: Int,
-    onGameNameChanged: (String) -> Unit,
-    onFormatChanged: (Format) -> Unit,
-    onPlayerCountChanged: (Int) -> Unit,
+    onGameNameChange: (String) -> Unit,
+    onFormatChange: (Format) -> Unit,
+    onPlayerCountChange: (Int) -> Unit,
     onSave: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -47,13 +47,13 @@ internal fun SetupScreenContent(
         verticalArrangement = Arrangement.spacedBy(16.dp),
         modifier = modifier.background(Color.Black)
             .fillMaxWidth()
-            .padding(8.dp)
+            .padding(8.dp),
     ) {
         TextField(
             value = gameName,
-            onValueChange = onGameNameChanged,
+            onValueChange = onGameNameChange,
             label = { Text(stringResource(Res.string.label_game_name)) },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         )
 
         Text(
@@ -63,7 +63,7 @@ internal fun SetupScreenContent(
 
         Row(
             horizontalArrangement = Arrangement.spacedBy(4.dp),
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
         ) {
             formats.forEach { format ->
                 TextButton(
@@ -71,7 +71,7 @@ internal fun SetupScreenContent(
                         contentColor = Color.Black,
                         containerColor = if (format == selectedFormat) Color.Red else Color.White,
                     ),
-                    onClick = { onFormatChanged(format) },
+                    onClick = { onFormatChange(format) },
                 ) {
                     Text(
                         text = format.name,
@@ -90,7 +90,7 @@ internal fun SetupScreenContent(
             value = players,
             minValue = selectedFormat.minPlayerCount,
             maxValue = selectedFormat.maxPlayerCount,
-            onValueChanged = onPlayerCountChanged,
+            onValueChange = onPlayerCountChange,
         )
 
         TextButton(
@@ -117,9 +117,9 @@ private fun SetupScreenContentPreview() {
         formats = formats(),
         selectedFormat = format,
         players = playerCount,
-        onGameNameChanged = { gameName = it },
-        onFormatChanged = { format = it },
-        onPlayerCountChanged = { playerCount = it },
+        onGameNameChange = { gameName = it },
+        onFormatChange = { format = it },
+        onPlayerCountChange = { playerCount = it },
         onSave = {},
     )
 }

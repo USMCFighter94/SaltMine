@@ -12,7 +12,6 @@ public class ScryfallDataSource internal constructor(
     private val client: HttpClient,
     private val scryfallMapper: ScryfallMapper,
 ) {
-
     public suspend fun fetchCommanders(): List<Commander> {
         val response = client.get(BASE) {
             url {

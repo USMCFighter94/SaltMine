@@ -7,5 +7,4 @@ public enum class MTGColor {
     RED,
     GREEN,
     COLORLESS,
-    ;
 }

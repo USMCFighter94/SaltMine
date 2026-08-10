@@ -20,29 +20,28 @@ public val Icon.subtract: ImageVector
             defaultHeight = 24.dp,
             viewportWidth = 24f,
             viewportHeight = 24f,
-        )
-            .apply {
-                path(
-                    fill = SolidColor(Color.Black),
-                    fillAlpha = 1f,
-                    stroke = null,
-                    strokeAlpha = 1f,
-                    strokeLineWidth = 1f,
-                    strokeLineCap = StrokeCap.Butt,
-                    strokeLineJoin = StrokeJoin.Bevel,
-                    strokeLineMiter = 1f,
-                    pathFillType = PathFillType.NonZero,
-                ) {
-                    moveTo(5f, 13f)
-                    verticalLineTo(11f)
-                    horizontalLineTo(19f)
-                    verticalLineToRelative(2f)
-                    horizontalLineTo(5f)
-                    close()
-                }
+        ).apply {
+            path(
+                fill = SolidColor(Color.Black),
+                fillAlpha = 1f,
+                stroke = null,
+                strokeAlpha = 1f,
+                strokeLineWidth = 1f,
+                strokeLineCap = StrokeCap.Butt,
+                strokeLineJoin = StrokeJoin.Bevel,
+                strokeLineMiter = 1f,
+                pathFillType = PathFillType.NonZero,
+            ) {
+                moveTo(5f, 13f)
+                verticalLineTo(11f)
+                horizontalLineTo(19f)
+                verticalLineToRelative(2f)
+                horizontalLineTo(5f)
+                close()
             }
-            .build()
+        }.build()
         return _subtract!!
     }
 
+@Suppress("ktlint:standard:backing-property-naming")
 private var _subtract: ImageVector? = null

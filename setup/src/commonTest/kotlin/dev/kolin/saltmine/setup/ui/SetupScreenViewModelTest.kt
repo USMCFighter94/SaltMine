@@ -5,7 +5,6 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class SetupScreenViewModelTest {
-
     private val sut = SetupScreenViewModel(State())
 
     @Test

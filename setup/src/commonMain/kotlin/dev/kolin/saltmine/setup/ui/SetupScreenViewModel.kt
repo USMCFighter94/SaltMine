@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.update
 public class SetupScreenViewModel(
     startingState: State = State(),
 ) {
-
     public val state: StateFlow<State>
         field = MutableStateFlow(startingState)
 
@@ -27,7 +26,7 @@ public class SetupScreenViewModel(
             state.copy(
                 selectedFormat = format,
                 players = state.players.takeIf { it in format.minPlayerCount..format.maxPlayerCount }
-                    ?: format.minPlayerCount
+                    ?: format.minPlayerCount,
             )
         }
     }
@@ -38,7 +37,7 @@ public class SetupScreenViewModel(
                 players = newCount.coerceIn(
                     it.selectedFormat.minPlayerCount,
                     it.selectedFormat.maxPlayerCount,
-                )
+                ),
             )
         }
     }

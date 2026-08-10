@@ -47,9 +47,9 @@ public val Icon.add: ImageVector
                 verticalLineTo(13f)
                 close()
             }
-        }
-            .build()
+        }.build()
         return _add!!
     }
 
+@Suppress("ktlint:standard:backing-property-naming")
 private var _add: ImageVector? = null
