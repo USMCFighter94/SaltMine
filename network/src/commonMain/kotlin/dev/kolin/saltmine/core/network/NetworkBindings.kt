@@ -8,7 +8,7 @@ import io.ktor.client.HttpClient
 
 @ContributesTo(AppScope::class)
 @BindingContainer
-object NetworkBindings {
+public object NetworkBindings {
     @Provides
-    fun provideHttpClient(): HttpClient = createHttpClient()
+    public fun provideHttpClient(): HttpClient = createHttpClient()
 }

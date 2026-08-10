@@ -31,7 +31,7 @@ import saltmine.setup.generated.resources.label_player_count
 import saltmine.setup.generated.resources.label_title_format
 
 @Composable
-fun SetupScreenContent(
+internal fun SetupScreenContent(
     gameName: String,
     formats: List<Format>,
     selectedFormat: Format,

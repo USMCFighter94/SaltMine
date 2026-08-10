@@ -1,6 +1,6 @@
 package dev.kolin.saltmine.core.domain
 
-enum class MTGColor {
+public enum class MTGColor {
     WHITE,
     BLUE,
     BLACK,

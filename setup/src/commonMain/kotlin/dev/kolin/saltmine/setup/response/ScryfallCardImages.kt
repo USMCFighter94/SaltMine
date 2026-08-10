@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ScryfallCardImages(
+internal data class ScryfallCardImages(
     @SerialName("small") val small: String?,
     @SerialName("normal") val normal: String?,
     @SerialName("large") val large: String?,

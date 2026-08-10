@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun SetupScreen(
+public fun SetupScreen(
     viewModel: SetupScreenViewModel,
     modifier: Modifier = Modifier,
 ) {

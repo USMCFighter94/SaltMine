@@ -1,6 +1,6 @@
 package dev.kolin.saltmine.core.domain
 
-data class Commander(
+public data class Commander(
     val name: String,
     val types: List<String>,
     val identity: List<MTGColor>,

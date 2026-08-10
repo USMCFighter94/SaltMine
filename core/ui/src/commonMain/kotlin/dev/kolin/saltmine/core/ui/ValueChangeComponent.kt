@@ -21,6 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.kolin.saltmine.core.ui.icons.Icon
+import dev.kolin.saltmine.core.ui.icons.add
+import dev.kolin.saltmine.core.ui.icons.subtract
 import org.jetbrains.compose.resources.stringResource
 import saltmine.core.ui.generated.resources.Res
 import saltmine.core.ui.generated.resources.icon_add_content_description

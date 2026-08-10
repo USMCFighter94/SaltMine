@@ -1,4 +1,4 @@
-package dev.kolin.saltmine.core.ui
+package dev.kolin.saltmine.core.ui.icons
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType
@@ -8,7 +8,6 @@ import androidx.compose.ui.graphics.StrokeJoin
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
-import dev.kolin.saltmine.core.ui.icons.Icon
 
 public val Icon.subtract: ImageVector
     get() {

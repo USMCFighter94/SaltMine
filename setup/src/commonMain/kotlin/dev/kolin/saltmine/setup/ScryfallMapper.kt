@@ -8,7 +8,7 @@ import dev.kolin.saltmine.setup.response.ScryfallResponse
 import dev.zacsweers.metro.Inject
 
 @Inject
-class ScryfallMapper {
+internal class ScryfallMapper {
     fun toDomain(
         response: ScryfallResponse?,
     ): Result<List<Commander>> {
