@@ -2,6 +2,7 @@ import dev.kolin.saltmine.SaltMineExtension
 import dev.kolin.saltmine.configureJava
 import dev.kolin.saltmine.configureKotlin
 import dev.kolin.saltmine.configureMultiplatformTargets
+import dev.kolin.saltmine.getLibrary
 import dev.kolin.saltmine.getPluginId
 import dev.kolin.saltmine.libs
 import org.gradle.api.Plugin
@@ -17,8 +18,15 @@ public class MultiplatformConventionPlugin : Plugin<Project> {
             apply(libs.getPluginId("android-multiplatform"))
         }
 
-        extensions.configure(KotlinMultiplatformExtension::class.java) {
-            it.configureMultiplatformTargets()
+        with(extensions.getByType(KotlinMultiplatformExtension::class.java)) {
+            configureMultiplatformTargets()
+
+            with(sourceSets) {
+                commonTest.dependencies {
+                    implementation(libs.getLibrary("kotlin-test"))
+                    implementation(libs.getLibrary("coroutines-test"))
+                }
+            }
         }
 
         configureJava()

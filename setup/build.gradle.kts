@@ -10,12 +10,10 @@ kotlin {
         commonMain.dependencies {
             implementation(project(":core:domain"))
             implementation(project(":core:ui"))
-            implementation(project(":network"))
+            api(project(":database"))
+            api(project(":network"))
 
             implementation(libs.coroutines.core)
-        }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
         }
     }
 }

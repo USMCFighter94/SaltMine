@@ -1,19 +1,27 @@
 package dev.kolin.saltmine.setup.ui
 
 import dev.kolin.saltmine.core.domain.Format
-import dev.kolin.saltmine.core.domain.di.ScreenScope
 import dev.kolin.saltmine.core.domain.formats
+import dev.kolin.saltmine.db.game.GameDatabaseAccessor
+import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.Inject
 import dev.zacsweers.metro.SingleIn
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-@SingleIn(scope = ScreenScope::class)
+@SingleIn(scope = AppScope::class)
 @Inject
 public class SetupScreenViewModel(
     startingState: State = State(),
+    private val gameDatabaseAccessor: GameDatabaseAccessor,
 ) {
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
     public val state: StateFlow<State>
         field = MutableStateFlow(startingState)
 
@@ -43,7 +51,17 @@ public class SetupScreenViewModel(
     }
 
     public fun save() {
-        println("You've saved!")
+        scope.launch {
+            val rowId = withContext(Dispatchers.Default) {
+                gameDatabaseAccessor.createNewGame(
+                    name = state.value.gameName,
+                    players = state.value.players,
+                    format = state.value.selectedFormat,
+                )
+            }
+
+            println("You've created a new game! $rowId!")
+        }
     }
 }
 

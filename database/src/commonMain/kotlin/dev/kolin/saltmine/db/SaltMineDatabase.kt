@@ -3,7 +3,8 @@ package dev.kolin.saltmine.db
 import androidx.room3.ConstructedBy
 import androidx.room3.Database
 import androidx.room3.RoomDatabase
-import dev.kolin.saltmine.db.entities.GameEntity
+import dev.kolin.saltmine.db.game.GameDao
+import dev.kolin.saltmine.db.game.GameEntity
 
 @Database(
     version = 1,
@@ -12,10 +13,10 @@ import dev.kolin.saltmine.db.entities.GameEntity
     ],
 )
 @ConstructedBy(SaltMineDatabaseConstructor::class)
-public abstract class SaltMineDatabase : RoomDatabase() {
+internal abstract class SaltMineDatabase : RoomDatabase() {
     internal abstract fun getGameDao(): GameDao
 
-    public companion object {
+    companion object {
         internal const val FILE_NAME = "saltmine.db"
     }
 }

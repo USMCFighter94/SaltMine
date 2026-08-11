@@ -14,9 +14,6 @@ kotlin {
             implementation(libs.coroutines.core)
             implementation(libs.kotlin.serialization)
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
         wasmJsMain.dependencies {
             implementation(libs.wrappers.browser)
         }

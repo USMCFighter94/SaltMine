@@ -1,5 +1,6 @@
 package dev.kolin.saltmine.db
 
+import dev.kolin.saltmine.db.game.GameDao
 import dev.zacsweers.metro.AppScope
 import dev.zacsweers.metro.BindingContainer
 import dev.zacsweers.metro.ContributesTo

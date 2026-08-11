@@ -21,15 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import dev.kolin.saltmine.setup.ui.SetupGraph
 import dev.kolin.saltmine.setup.ui.SetupScreen
 import dev.zacsweers.metro.createGraph
 
 public fun main(): Unit = application {
-//    val graph = createGraph<AppGraph>()
-//    val viewModel = graph.viewModel
-
-    val viewModel = createGraph<SetupGraph>().viewModel
+    val graph = createGraph<DesktopGraph>()
+    val viewModel = graph.setupGraph.viewModel
 
     Window(
         onCloseRequest = ::exitApplication,
