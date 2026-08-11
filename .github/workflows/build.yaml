@@ -11,13 +11,12 @@ env:
   GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096M -Dorg.gradle.daemon=false -Dorg.gradle.parallel=true -Dorg.gradle.caching=true"
 
 jobs:
-  build-android:
+  android:
     name: Build Android
     runs-on: ubuntu-latest
-    needs: test
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Gradle setup
         uses: ./.github/actions/gradle-setup
@@ -26,18 +25,17 @@ jobs:
         run: ./gradlew :android:assembleDebug
 
       - name: Upload Android debug APK
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: android-apk
           path: android/build/outputs/apk/debug/*.apk
 
-#  build-ios:
+#  ios:
 #    name: Build iOS simulator app
 #    runs-on: macos-latest
-#    needs: test
 #    steps:
 #      - name: Checkout
-#        uses: actions/checkout@v4
+#        uses: actions/checkout@v7
 #
 #      - name: Gradle setup
 #        uses: ./.github/actions/gradle-setup
@@ -48,25 +46,26 @@ jobs:
 #      - name: Build iOS simulator app
 #        run: |
 #          xcodebuild build \
-#          -project SaltMine/SaltMine.xcodeproj \
+#          -project iosApp/SaltMine.xcodeproj \
 #          -configuration Debug \
 #          -scheme JetcasterMigration \
 #          -sdk iphonesimulator \
+#          -arch arm64 \
 #          -derivedDataPath ./build \
 #          -verbose
 
       - name: Upload App Folder
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: iphonesimulator-app
           path: build/Build/Products/Debug-iphonesimulator/*
 
-  build-desktop-macos:
+  desktop-macos:
     name: Build Desktop macOS
     runs-on: macos-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Gradle setup
         uses: ./.github/actions/gradle-setup
@@ -75,36 +74,36 @@ jobs:
         run: ./gradlew :desktop:packageDmg
 
       - name: Upload macOS DMG
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: desktop-macos-dmg
           path: sharedUi/build/compose/binaries/main/dmg/*.dmg
 
-  build-desktop-windows:
+  desktop-windows:
     name: Build Desktop Windows
     runs-on: windows-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5.0.0
+      - name: Gradle setup
+        uses: ./.github/actions/gradle-setup
 
       - name: Build Windows MSI
         run: ./gradlew :desktop:packageMsi
 
       - name: Upload Windows MSI
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: desktop-windows-msi
           path: desktop/build/compose/binaries/main/msi/*.msi
 
-  build-desktop-linux:
+  desktop-linux:
     name: Build Desktop Linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Gradle setup
         uses: ./.github/actions/gradle-setup
@@ -113,17 +112,17 @@ jobs:
         run: ./gradlew :desktop:packageDeb
 
       - name: Upload Linux DEB
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: desktop-linux-deb
           path: desktop/build/compose/binaries/main/deb/*.deb
 
-#  build-wasm:
+#  wasm:
 #    name: Build Wasm
 #    runs-on: ubuntu-latest
 #    steps:
 #      - name: Checkout
-#        uses: actions/checkout@v4
+#        uses: actions/checkout@v7
 #
 #      - name: Gradle setup
 #        uses: ./.github/actions/gradle-setup
@@ -132,7 +131,7 @@ jobs:
 #        run: ./gradlew :webApp:wasmJsBrowserDistribution
 #
 #      - name: Upload Wasm app
-#        uses: actions/upload-artifact@v4
+#        uses: actions/upload-artifact@v7
 #        with:
 #          name: wasm-app
 #          path: webApp/build/dist/wasmJs/productionExecutable/
