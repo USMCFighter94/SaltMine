@@ -17,7 +17,7 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
-        jsMain.dependencies {
+        wasmJsMain.dependencies {
             implementation(libs.wrappers.browser)
         }
     }

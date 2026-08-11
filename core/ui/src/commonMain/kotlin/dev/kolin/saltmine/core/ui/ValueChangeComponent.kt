@@ -11,7 +11,7 @@ import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -21,6 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import dev.kolin.saltmine.core.ui.icons.Icon
+import dev.kolin.saltmine.core.ui.icons.add
+import dev.kolin.saltmine.core.ui.icons.subtract
 import org.jetbrains.compose.resources.stringResource
 import saltmine.core.ui.generated.resources.Res
 import saltmine.core.ui.generated.resources.icon_add_content_description
@@ -29,20 +31,20 @@ import saltmine.core.ui.generated.resources.icon_subtract_content_description
 @Composable
 public fun ValueChangeComponent(
     value: Int,
-    onValueChanged: (Int) -> Unit,
+    onValueChange: (Int) -> Unit,
+    modifier: Modifier = Modifier,
     minValue: Int = Int.MIN_VALUE,
     maxValue: Int = Int.MAX_VALUE,
-    modifier: Modifier = Modifier,
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp),
-        modifier = modifier.padding(horizontal = 8.dp)
+        modifier = modifier.padding(horizontal = 8.dp),
     ) {
         IconButton(
             colors = colors(),
             enabled = value > minValue,
-            onClick = { onValueChanged(value - 1) }
+            onClick = { onValueChange(value - 1) },
         ) {
             Icon(
                 imageVector = Icon.subtract,
@@ -60,7 +62,7 @@ public fun ValueChangeComponent(
         IconButton(
             colors = colors(),
             enabled = value < maxValue,
-            onClick = { onValueChanged(value + 1) }
+            onClick = { onValueChange(value + 1) },
         ) {
             Icon(
                 imageVector = Icon.add,
@@ -72,21 +74,20 @@ public fun ValueChangeComponent(
 }
 
 @Composable
-private fun colors(): IconButtonColors =
-    IconButtonDefaults.iconButtonColors(
-        contentColor = Color.White,
-        containerColor = Color.Transparent,
-    )
+private fun colors(): IconButtonColors = IconButtonDefaults.iconButtonColors(
+    contentColor = Color.White,
+    containerColor = Color.Transparent,
+)
 
 @Composable
 @Preview
 private fun SetupScreenContentPreview() {
-    var playerCount by remember { mutableStateOf(2) }
+    var playerCount by remember { mutableIntStateOf(2) }
 
     ValueChangeComponent(
         value = playerCount,
         minValue = 2,
         maxValue = 6,
-        onValueChanged = { playerCount = it },
+        onValueChange = { playerCount = it },
     )
 }

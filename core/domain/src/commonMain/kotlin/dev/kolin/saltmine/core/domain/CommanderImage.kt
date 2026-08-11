@@ -1,6 +1,6 @@
 package dev.kolin.saltmine.core.domain
 
-data class CommanderImage(
+public data class CommanderImage(
     val small: String,
     val normal: String,
     val large: String,

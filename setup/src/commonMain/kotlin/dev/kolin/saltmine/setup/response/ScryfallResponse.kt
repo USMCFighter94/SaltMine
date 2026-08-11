@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class ScryfallResponse(
+internal data class ScryfallResponse(
     @SerialName("object") val obj: String?,
     @SerialName("total_cards") val totalCards: Int?,
     @SerialName("has_more") val hasMore: Boolean?,

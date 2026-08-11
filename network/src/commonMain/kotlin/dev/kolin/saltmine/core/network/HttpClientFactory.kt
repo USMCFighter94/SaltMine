@@ -20,7 +20,7 @@ internal fun httpClientConfig(): HttpClientConfig<HttpClientEngineConfig>.() -> 
                 explicitNulls = false
                 encodeDefaults = true
                 ignoreUnknownKeys = true
-            }
+            },
         )
     }
 }

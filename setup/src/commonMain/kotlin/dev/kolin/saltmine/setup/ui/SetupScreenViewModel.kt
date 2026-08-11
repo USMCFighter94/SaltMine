@@ -11,44 +11,43 @@ import kotlinx.coroutines.flow.update
 
 @SingleIn(scope = ScreenScope::class)
 @Inject
-class SetupScreenViewModel(
+public class SetupScreenViewModel(
     startingState: State = State(),
 ) {
-
-    val state: StateFlow<State>
+    public val state: StateFlow<State>
         field = MutableStateFlow(startingState)
 
-    fun onGameNameChanged(gameName: String) {
+    public fun onGameNameChanged(gameName: String) {
         state.update { it.copy(gameName = gameName) }
     }
 
-    fun onFormatChanged(format: Format) {
+    public fun onFormatChanged(format: Format) {
         state.update { state ->
             state.copy(
                 selectedFormat = format,
                 players = state.players.takeIf { it in format.minPlayerCount..format.maxPlayerCount }
-                    ?: format.minPlayerCount
+                    ?: format.minPlayerCount,
             )
         }
     }
 
-    fun onPlayerCountChanged(newCount: Int) {
+    public fun onPlayerCountChanged(newCount: Int) {
         state.update {
             it.copy(
                 players = newCount.coerceIn(
                     it.selectedFormat.minPlayerCount,
                     it.selectedFormat.maxPlayerCount,
-                )
+                ),
             )
         }
     }
 
-    fun save() {
+    public fun save() {
         println("You've saved!")
     }
 }
 
-data class State(
+public data class State(
     val gameName: String = "",
     val formats: List<Format> = formats(),
     val selectedFormat: Format = Format.Commander,

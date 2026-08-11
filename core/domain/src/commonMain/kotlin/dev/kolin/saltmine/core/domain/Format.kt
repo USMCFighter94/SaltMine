@@ -1,26 +1,26 @@
 package dev.kolin.saltmine.core.domain
 
-sealed interface Format {
-    val name: String
-    val minPlayerCount: Int
-    val maxPlayerCount: Int
-    val startingLife: Int
+public sealed interface Format {
+    public val name: String
+    public val minPlayerCount: Int
+    public val maxPlayerCount: Int
+    public val startingLife: Int
 
-    data object Standard : Format {
+    public data object Standard : Format {
         override val name: String = "Standard"
         override val minPlayerCount: Int = 2
         override val maxPlayerCount: Int = 2
         override val startingLife: Int = 20
     }
 
-    data object Modern : Format {
+    public data object Modern : Format {
         override val name: String = "Modern"
         override val minPlayerCount: Int = 2
         override val maxPlayerCount: Int = 2
         override val startingLife: Int = 20
     }
 
-    data object Commander : Format {
+    public data object Commander : Format {
         override val name: String = "Commander"
         override val minPlayerCount: Int = 2
         override val maxPlayerCount: Int = 6
@@ -28,9 +28,8 @@ sealed interface Format {
     }
 }
 
-fun formats(): List<Format> =
-    listOf(
-        Format.Commander,
-        Format.Standard,
-        Format.Modern,
-    )
+public fun formats(): List<Format> = listOf(
+    Format.Commander,
+    Format.Standard,
+    Format.Modern,
+)

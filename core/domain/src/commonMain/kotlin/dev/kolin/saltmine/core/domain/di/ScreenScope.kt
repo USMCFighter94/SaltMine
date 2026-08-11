@@ -1,3 +1,3 @@
 package dev.kolin.saltmine.core.domain.di
 
-abstract class ScreenScope private constructor()
+public abstract class ScreenScope private constructor()

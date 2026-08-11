@@ -1,3 +1,5 @@
+@file:Suppress("ktlint:standard:filename")
+
 package dev.kolin.saltmine
 
 import androidx.compose.animation.AnimatedVisibility
@@ -12,14 +14,9 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
@@ -28,7 +25,7 @@ import dev.kolin.saltmine.setup.ui.SetupGraph
 import dev.kolin.saltmine.setup.ui.SetupScreen
 import dev.zacsweers.metro.createGraph
 
-fun main() = application {
+public fun main(): Unit = application {
 //    val graph = createGraph<AppGraph>()
 //    val viewModel = graph.viewModel
 
@@ -46,12 +43,13 @@ fun main() = application {
 @Composable
 private fun App(
     viewModel: DesktopViewModel,
+    modifier: Modifier = Modifier,
 ) {
     MaterialTheme {
         val state by viewModel.state.collectAsStateWithLifecycle()
 
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .background(MaterialTheme.colors.background)
                 .safeContentPadding()
                 .fillMaxSize(),

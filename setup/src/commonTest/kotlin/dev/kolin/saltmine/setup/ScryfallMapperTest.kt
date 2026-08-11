@@ -8,7 +8,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 internal class ScryfallMapperTest {
-
     private val sut = ScryfallMapper()
 
     @Test
@@ -33,9 +32,7 @@ internal class ScryfallMapperTest {
         val numOfCommanders = Random.nextInt(1, 11)
         val commanders = (1..numOfCommanders).map { createFakeScryfallCardResponse() }
 
-        val response = createFakeScryfallResponse(
-            data = commanders,
-        )
+        val response = createFakeScryfallResponse(data = commanders)
 
         val actual = sut.toDomain(response)
         assertTrue(actual.isSuccess)

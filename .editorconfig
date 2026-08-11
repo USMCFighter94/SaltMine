@@ -1,0 +1,16 @@
+# noinspection EditorConfigKeyCorrectness
+[*.{kt,kts}]
+indent_size = 4
+max_line_length = 120
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# ktlint rules
+ktlint_function_signature_body_expression_wrapping = default
+ktlint_function_naming_ignore_when_annotated_with = Composable
+ktlint_standard_chain-method-continuation = disabled
+ktlint_standard_multiline-expression-wrapping = disabled
+
+#IntelliJ Rules
+ij_kotlin_allow_trailing_comma = true
+ij_kotlin_allow_trailing_comma_on_call_site = true

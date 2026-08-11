@@ -6,7 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
-fun SetupScreen(
+public fun SetupScreen(
     viewModel: SetupScreenViewModel,
     modifier: Modifier = Modifier,
 ) {
@@ -17,9 +17,9 @@ fun SetupScreen(
         formats = state.formats,
         selectedFormat = state.selectedFormat,
         players = state.players,
-        onGameNameChanged = viewModel::onGameNameChanged,
-        onFormatChanged = viewModel::onFormatChanged,
-        onPlayerCountChanged = viewModel::onPlayerCountChanged,
+        onGameNameChange = viewModel::onGameNameChanged,
+        onFormatChange = viewModel::onFormatChanged,
+        onPlayerCountChange = viewModel::onPlayerCountChanged,
         onSave = viewModel::save,
         modifier = modifier,
     )
