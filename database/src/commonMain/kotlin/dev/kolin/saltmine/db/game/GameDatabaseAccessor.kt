@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 @Inject
-public class GameDatabaseAccessor internal constructor(
+public class GameDatabaseAccessor(
     private val dao: GameDao,
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) {

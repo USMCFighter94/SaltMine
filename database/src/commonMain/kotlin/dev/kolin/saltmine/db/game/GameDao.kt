@@ -6,16 +6,16 @@ import androidx.room3.Query
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-internal interface GameDao {
+public interface GameDao {
     @Insert
-    suspend fun insert(item: GameEntity): Long
+    public suspend fun insert(item: GameEntity): Long
 
     @Query("SELECT * FROM GameEntity WHERE id = :id")
-    suspend fun find(id: Long): List<GameEntity>
+    public suspend fun find(id: Long): List<GameEntity>
 
     @Query("SELECT count(*) FROM GameEntity")
-    suspend fun count(): Int
+    public suspend fun count(): Int
 
     @Query("SELECT * FROM GameEntity")
-    fun getAllAsFlow(): Flow<List<GameEntity>>
+    public fun getAllAsFlow(): Flow<List<GameEntity>>
 }
