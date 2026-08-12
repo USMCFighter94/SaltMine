@@ -1,7 +1,6 @@
 import dev.kolin.saltmine.getLibrary
 import dev.kolin.saltmine.getPluginId
 import dev.kolin.saltmine.libs
-import groovy.lang.Closure
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension

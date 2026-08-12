@@ -11,28 +11,12 @@ public interface SaltMineExtension {
      */
     public val warningsAsErrors: Property<Boolean>
 
-    /**
-     * Should iOS targets be enabled?
-     * 
-     * Defaults to true.
-     */
-    public val iOSEnabled: Property<Boolean>
-
-    /**
-     * Should WebAssembly targets be enabled?
-     * 
-     * Defaults to true.
-     */
-    public val wasmEnabled: Property<Boolean>
-
     public companion object {
         private const val NAME = "saltmine"
 
         public fun create(extensions: ExtensionContainer): SaltMineExtension =
             extensions.create(NAME, SaltMineExtension::class.java).apply {
                 warningsAsErrors.convention(true)
-                iOSEnabled.convention(true)
-                wasmEnabled.convention(true)
             }
     }
 }

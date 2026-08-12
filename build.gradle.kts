@@ -8,6 +8,8 @@ plugins {
     alias(libs.plugins.kotlin) apply false
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.room3) apply false
 }
 
 subprojects {

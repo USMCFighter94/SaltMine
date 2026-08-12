@@ -55,6 +55,7 @@ dependencies {
     compileOnly(libs.android.tools.common)
     compileOnly(libs.compose.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.room3.gradlePlugin)
     lintChecks(libs.androidx.lint)
 
     "functionalTestImplementation"(libs.kotlin.test)
@@ -83,6 +84,11 @@ gradlePlugin {
         register("saltmine-compose") {
             id = libs.plugins.saltmine.compose.get().pluginId
             implementationClass = "ComposeConventionPlugin"
+        }
+
+        register("saltmine-room") {
+            id = libs.plugins.saltmine.room.get().pluginId
+            implementationClass = "RoomConventionPlugin"
         }
 
         register("saltmine-test") {

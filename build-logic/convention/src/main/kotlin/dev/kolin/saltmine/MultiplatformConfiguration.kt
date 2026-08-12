@@ -31,21 +31,13 @@ internal fun KotlinMultiplatformExtension.configureMultiplatformTargets() {
             jvmTarget.set(JvmTarget.fromTarget(project.libs.getVersionString("java")))
         }
     }
-}
 
-internal fun KotlinMultiplatformExtension.configureOptionalMultiplatformTargets(
-    extension: SaltMineExtension,
-) {
-    if (extension.iOSEnabled.get()) {
-        iosArm64()
-        iosSimulatorArm64()
-    }
+    iosArm64()
+    iosSimulatorArm64()
 
-    if (extension.wasmEnabled.get()) {
-        @OptIn(ExperimentalWasmDsl::class)
-        wasmJs {
-            browser()
-        }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
     }
 
 //    if (composeNativeEnabled) {

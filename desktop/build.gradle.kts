@@ -9,7 +9,6 @@ plugins {
 
 dependencies {
     implementation(project(":core:domain"))
-    implementation(project(":network"))
     implementation(project(":setup"))
 
     implementation(compose.desktop.currentOs)

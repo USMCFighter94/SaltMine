@@ -1,14 +1,26 @@
 package dev.kolin.saltmine.setup.ui
 
 import dev.kolin.saltmine.core.domain.Format
+import dev.kolin.saltmine.db.game.GameDatabaseAccessor
+import dev.kolin.saltmine.setup.FakeGameDao
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
+@OptIn(ExperimentalCoroutinesApi::class)
 internal class SetupScreenViewModelTest {
-    private val sut = SetupScreenViewModel(State())
+    private val sut = SetupScreenViewModel(
+        startingState = State(),
+        gameDatabaseAccessor = GameDatabaseAccessor(
+            dao = FakeGameDao(),
+            dispatcher = UnconfinedTestDispatcher(),
+        ),
+    )
 
     @Test
-    fun onGameNameChanged() {
+    fun onGameNameChanged() = runTest {
         val newName = "A really fun game!"
 
         sut.onGameNameChanged(newName)
@@ -18,7 +30,7 @@ internal class SetupScreenViewModelTest {
     }
 
     @Test
-    fun onFormatChanged() {
+    fun onFormatChanged() = runTest {
         val newFormat = Format.Modern
 
         sut.onFormatChanged(newFormat)
@@ -28,7 +40,7 @@ internal class SetupScreenViewModelTest {
     }
 
     @Test
-    fun `onPlayerCountChanged - count above format`() {
+    fun `onPlayerCountChanged - count above format`() = runTest {
         val newCount = 100
 
         sut.onPlayerCountChanged(newCount)
@@ -38,7 +50,7 @@ internal class SetupScreenViewModelTest {
     }
 
     @Test
-    fun `onPlayerCountChanged - count below format`() {
+    fun `onPlayerCountChanged - count below format`() = runTest {
         val newCount = 1
 
         sut.onPlayerCountChanged(newCount)
@@ -48,7 +60,7 @@ internal class SetupScreenViewModelTest {
     }
 
     @Test
-    fun `onPlayerCountChanged - count within format`() {
+    fun `onPlayerCountChanged - count within format`() = runTest {
         val newCount = 3
 
         sut.onPlayerCountChanged(newCount)
